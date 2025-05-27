@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>sentir amor</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: red;
+        color: white;
+        font-family: Arial, sans-serif;
+        overflow: hidden; /* Evita el desplazamiento de la ventana */
+    }
+
+    #amor {
+        position: absolute;
+        font-size: 3em;
+        cursor: pointer;
+    }
+</style>
+<link rel="icon" href="https://cdn.glitch.global/06510c22-799d-41a9-acc4-5b86bc4bf667/emoticon-hugging-red-heart-vector-31303985-removebg-preview.png?v=1724268030623" type="image/png">
+</head>
+<body>
+<div id="amor">amor</div>
+<p style="position: fixed; bottom: 10px; text-align: center;">haz clic en 𝒶𝓂𝑜𝓇 para sentir amor </p>
+
+<script>
+    var amor = document.getElementById('amor');
+    var body = document.querySelector('body');
+    var moveCount = localStorage.getItem('moveCount') ? parseInt(localStorage.getItem('moveCount')) : 0; // Obtener el contador desde localStorage
+
+    // Función para mover el amor a una nueva ubicación aleatoria
+    function moveAmor() {
+        // Incrementar el contador de movimientos
+        moveCount++;
+        // Guardar el contador actualizado en localStorage
+        localStorage.setItem('moveCount', moveCount);
+
+        console.log("se intentó sentir 𝒶𝓂𝑜𝓇 " + moveCount + " veces");
+
+        // Obtener dimensiones de la ventana
+        var windowWidth = window.innerWidth;
+        var windowHeight = window.innerHeight;
+
+        // Generar nuevas coordenadas aleatorias dentro de la ventana
+        var newLeft = Math.random() * (windowWidth - 200); // Restamos 200 para mantener la palabra dentro de la ventana
+        var newTop = Math.random() * (windowHeight - 200); // Restamos 200 para mantener la palabra dentro de la ventana
+
+        // Asignar las nuevas coordenadas a la palabra "amor"
+        amor.style.left = newLeft + 'px';
+        amor.style.top = newTop + 'px';
+    }
+
+    // Llamar a la función moveAmor cuando el cursor se mueva sobre la palabra "amor"
+    amor.addEventListener('mouseenter', moveAmor);
+</script>
+</body>
+</html>
