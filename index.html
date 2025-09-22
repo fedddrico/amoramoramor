@@ -59,6 +59,11 @@
 
     // Llamar a la función moveAmor cuando el cursor se mueva sobre la palabra "amor"
     amor.addEventListener('mouseenter', moveAmor);
+
+    let t,reset=()=>{clearTimeout(t);t=setTimeout(()=>location.reload(),120000)};
+    ['click','keydown','scroll','mousemove','touchstart'].forEach(e=>addEventListener(e,reset));
+    reset();
+    
 </script>
 </body>
 </html>
